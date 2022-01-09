@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <title>Fitt's Law</title>
+  <style>
+    body {
+      background: rgb(46, 142, 167);
+    }
+
+    .buttons_Shape {
+      margin: 30em;
+      width: 60px;height: 60px;
+    }
+    #button1 {
+      background-color: rgb(100, 67, 165);box-shadow: 2px 7px 5px rgb(0, 0, 0);
+    }
+    #button2 {
+      background-color: rgb(209, 160, 69);box-shadow: 2px 7px 5px rgb(0, 0, 0);
+    }
+    #buttons_Position {
+
+      display: flex; position: absolute;
+      top: 50%;left: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+
+  </style>
+</head>
+
+<body>
+  <font size="20">  
+    <p>Fitts' Law</p>
+    </font>  
+ <font size="20">
+  <ul>
+      <li>Pressthe left Button then the right Button </li>
+      <li>Repeat this for 5 times</li>    
+  </ul>
+  </font>
+  <font size="3">
+  </b>
+</b>
+  </font>
+  </font>
+  <p>Time Elapsed:</p><p id="demo"></p>
+  <p>Distance:</p><p id="demoo"></p>
+  </font>
+  </div>
+  <div id="buttons_Position">
+    <button class="buttons_Shape" id="button1" type="submit"></button>
+    <button class="buttons_Shape" id="button2" type="submit"></button>
+  </div>
+</body>
+
+
+<script>
+  var t = 1;
+  var width = [30, 75, 110, 90];
+  var i=0, j=0;
+  var startTime, endTime;
+  document.getElementById("button1").onclick = function () {
+    startTime = new Date().getTime();
+  }
+
+  document.getElementById("button2").onclick = function () {
+    endTime = new Date().getTime();
+    
+    
+    let Button1 = document.getElementById("button1");
+    let Button2 = document.getElementById("button2");
+    document.getElementById("demo").innerHTML= endTime- startTime;
+    document.getElementById("demoo").innerHTML= Math.abs(Button1.getBoundingClientRect().left - Button2.getBoundingClientRect().left);
+   
+    t++;
+    if (t >= 6) {
+      alert("Testcase Finished");
+      t = 1;
+      return;
+    }    
+    
+    Button1.style.width = width[j] + "px" ;
+    Button2.style.width = width[j] + "px" ;
+    j++;
+    Button1.style.marginRight = `${Math.abs(Math.ceil(Math.random() * 50))}em`;
+    Button2.style.marginRight = `${Math.abs(Math.ceil(Math.random() * 50))}em`;
+  }
+</script>
+
+</html>
